@@ -1,107 +1,110 @@
-# E-confident - Stack Technique
+# E-confident - Protection contre le cyberharcèlement
 
-## Frontend
+## Description
+E-confident est une solution innovante de protection contre le cyberharcèlement, utilisant l'IA pour détecter et prévenir les situations à risque en temps réel.
 
-### Framework Principal
-- **Next.js 14** - Framework React moderne avec rendu côté serveur (SSR) et génération statique
-- **React** - Bibliothèque UI pour la construction d'interfaces interactives
-- **TypeScript** - Typage statique pour une meilleure maintenabilité et détection d'erreurs
+## Prérequis
+- Node.js (version 18 ou supérieure)
+- npm (généralement installé avec Node.js)
+- Git
 
-### Styling
-- **Tailwind CSS** - Framework CSS utilitaire pour un design responsive et moderne
-- **CSS Modules** - Pour la modularisation des styles
-- **PostCSS** - Pour le traitement des styles CSS
+## Installation
 
-### Animations & Interactivité
-- **Framer Motion** - Pour les animations fluides
-- **requestAnimationFrame** - Pour les animations personnalisées (curseur, logo 3D)
-- **CSS Transitions** - Pour les effets de hover et transitions
-
-### Optimisation des Images
-- **Next/Image** - Composant optimisé pour le chargement des images
-- **WebP** - Format d'image moderne pour de meilleures performances
-
-### Performance
-- **Lazy Loading** - Pour le chargement différé des composants
-- **Code Splitting** - Pour optimiser le chargement initial
-- **Optimisation des assets** - Compression et optimisation des ressources
-
-## Architecture
-
-### Structure du Projet
-```
-frontend/
-├── src/
-│   ├── app/          # Pages et routes Next.js
-│   ├── components/   # Composants réutilisables
-│   ├── styles/       # Styles globaux et modules
-│   └── utils/        # Fonctions utilitaires
-├── public/           # Assets statiques
-└── package.json      # Dépendances et scripts
+1. **Cloner le dépôt**
+```bash
+git clone https://gitlab.com/votre-username/e-confident.git
+cd e-confident
 ```
 
-### Fonctionnalités Principales
-- **Curseur Personnalisé** - Animation fluide avec effet de lag
-- **Logo 3D Interactif** - Animation basée sur la position de la souris
-- **Design Responsive** - Adaptation à tous les appareils
-- **Gradients Dynamiques** - Effets visuels modernes
-- **Sections Interactives** - Animations au scroll et au hover
+2. **Installer les dépendances**
+```bash
+cd frontend
+npm install
+```
+
+3. **Configuration de l'environnement**
+Créez un fichier `.env.local` à la racine du dossier `frontend` avec les variables suivantes :
+```env
+NEXT_PUBLIC_API_URL=votre_url_api
+```
 
 ## Développement
 
-### Outils de Développement
-- **ESLint** - Linting du code
-- **Prettier** - Formatage du code
-- **Git** - Versioning
-- **VS Code** - IDE recommandé
+1. **Lancer le serveur de développement**
+```bash
+npm run dev
+```
+Le site sera accessible à l'adresse : [http://localhost:3000](http://localhost:3000)
 
-### Bonnes Pratiques
-- **Atomic Design** - Organisation des composants
-- **Mobile First** - Approche responsive
-- **Accessibilité** - Conformité WCAG
-- **SEO** - Optimisation pour les moteurs de recherche
+2. **Vérifier le code**
+```bash
+npm run lint
+```
 
-## Performance & SEO
+## Build et Production
 
-### Optimisations
-- **Lazy Loading** des images et composants
-- **Code Splitting** automatique
-- **Préchargement** des ressources critiques
-- **Compression** des assets
+1. **Créer une version de production**
+```bash
+npm run build
+```
 
-### SEO
-- **Meta Tags** dynamiques
-- **Schema.org** pour le référencement
-- **Sitemap** généré automatiquement
-- **Robots.txt** configuré
+2. **Lancer la version de production**
+```bash
+npm run start
+```
+
+## Structure du Projet
+```
+frontend/
+├── src/
+│   ├── app/          # Pages Next.js
+│   │   ├── page.tsx  # Page d'accueil
+│   │   ├── contact/  # Page contact
+│   │   └── about/    # Page à propos
+│   └── components/   # Composants React
+│       ├── Navbar.tsx
+│       └── Footer.tsx
+├── public/           # Assets statiques
+└── package.json      # Dépendances
+```
+
+## Technologies Utilisées
+- Next.js 14
+- React
+- TypeScript
+- Tailwind CSS
+- PostCSS
+
+## Fonctionnalités Principales
+- Détection en temps réel du cyberharcèlement
+- Interface utilisateur moderne et responsive
+- Animations fluides et interactives
+- Support multilingue
+- Protection des données sensibles
+
+## Contribution
+1. Fork le projet
+2. Créez votre branche (`git checkout -b feature/AmazingFeature`)
+3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push sur la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrez une Pull Request
 
 ## Déploiement
+Le site est déployé sur Vercel. Chaque push sur la branche `main` déclenche un déploiement automatique.
 
-### Environnements
-- **Développement** - Local
-- **Staging** - Pré-production
-- **Production** - Environnement live
+## Support
+Pour toute question ou problème, veuillez :
+1. Consulter la [documentation](lien_vers_doc)
+2. Ouvrir une issue sur GitLab
+3. Contacter l'équipe de support
 
-### CI/CD
-- **Vercel** - Plateforme de déploiement
-- **GitHub Actions** - Automatisation des déploiements
+## Licence
+Ce projet est sous licence [MIT](LICENSE).
 
-## Sécurité
+## Auteurs
+- Votre Nom - Développeur Principal
 
-### Mesures Implémentées
-- **CSP** (Content Security Policy)
-- **HTTPS** obligatoire
-- **Protection XSS**
-- **Rate Limiting**
-
-## Maintenance
-
-### Monitoring
-- **Vercel Analytics**
-- **Error Tracking**
-- **Performance Monitoring**
-
-### Mises à Jour
-- **Dépendances** régulièrement mises à jour
-- **Sécurité** patches appliqués automatiquement
-- **Documentation** maintenue à jour 
+## Remerciements
+- Tous les contributeurs
+- La communauté open source
+- Nos utilisateurs pour leurs retours précieux 
