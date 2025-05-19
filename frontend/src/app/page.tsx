@@ -5,35 +5,35 @@ import Image from 'next/image';
 const faqs = [
   {
     question: "Comment fonctionne E-confident ?",
-    answer: "Notre IA analyse en temps réel les messages pour détecter et signaler tout comportement de cyberharcèlement, tout en respectant la confidentialité des utilisateurs."
+    answer: "Notre IA analyse localement vos messages pour détecter tout comportement toxique, avec un taux de détection supérieur à 90%. Vos données restent confidentielles et sont traitées uniquement sur votre appareil."
   },
   {
     question: "Est-ce compatible avec tous les réseaux sociaux ?",
-    answer: "e-confident s'intègre facilement à la plupart des plateformes de messagerie et réseaux sociaux grâce à nos API et extensions."
+    answer: "Oui, E-confident s'intègre avec WhatsApp, SMS, Messenger et la plupart des plateformes de messagerie. Notre solution est multi-plateformes et synchronisée sur tous vos appareils."
   },
   {
     question: "L'outil est-il accessible aux particuliers et aux entreprises ?",
-    answer: "Oui, e-confident propose des solutions adaptées aussi bien aux particuliers, familles, écoles qu'aux entreprises et collectivités."
+    answer: "Nous proposons des solutions adaptées pour tous : particuliers (version gratuite), établissements scolaires (avec tableau de bord pour les équipes pédagogiques) et entreprises (intégration personnalisée)."
   },
   {
-    question: "Comment puis-je contacter le support ?",
-    answer: "Notre équipe est disponible 24/7 par chat, email ou téléphone pour répondre à toutes vos questions."
+    question: "Comment fonctionne le support ?",
+    answer: "Notre équipe est disponible 24/7 via le chatbot intégré qui offre un soutien émotionnel immédiat. En cas de besoin, vous pouvez également contacter nos experts directement."
   },
 ];
 
 const testimonials = [
   {
-    name: "Sophie, maman d'adolescent",
-    text: "Grâce à e-confident, mon fils a retrouvé confiance en lui et n'a plus peur d'aller sur les réseaux sociaux. Un vrai soulagement pour toute la famille !"
+    name: "Clara, 17 ans",
+    text: "Grâce à E-confident, je me sens enfin en sécurité sur les réseaux sociaux. L'application détecte immédiatement les messages toxiques et le chatbot m'aide vraiment quand j'en ai besoin."
+  },
+  {
+    name: "M. et Mme Diallo, parents",
+    text: "En tant que parents, nous sommes rassurés de savoir que nos enfants sont protégés en ligne. Les notifications nous alertent en cas de situation à risque."
   },
   {
     name: "Lycée Jean Moulin",
-    text: "L'intégration d'e-confident dans notre établissement a permis de réduire considérablement les situations de harcèlement en ligne."
-  },
-  {
-    name: "Marc, DRH d'entreprise",
-    text: "Un outil indispensable pour garantir un environnement numérique sain à nos collaborateurs."
-  },
+    text: "La solution nous permet de prévenir efficacement le cyberharcèlement. Le tableau de bord et les rapports anonymisés nous aident à agir rapidement."
+  }
 ];
 
 export default function Home() {
@@ -172,36 +172,36 @@ export default function Home() {
       </section>
 
       {/* Pourquoi choisir e-confident */}
-      <section id="pourquoi" className="py-20 px-4 lg:px-8 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-20 px-4 lg:px-8">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-900 mb-6">
               Pourquoi choisir E-confident ?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Une solution complète et innovante pour lutter efficacement contre le cyberharcèlement
+              Une solution innovante qui protège, détecte et accompagne en temps réel contre le cyberharcèlement
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             <div className="bg-white rounded-2xl shadow-xl p-8 transform hover:-translate-y-2 transition-all duration-300">
               <div className="text-5xl mb-6">🤖</div>
-              <h3 className="text-2xl font-bold text-blue-800 mb-4">Détection intelligente</h3>
+              <h3 className="text-2xl font-bold text-blue-800 mb-4">IA Locale Avancée</h3>
               <p className="text-gray-600 leading-relaxed">
-                Notre IA de pointe analyse en continu les conversations pour identifier les comportements toxiques et prévenir le harcèlement.
+                Notre intelligence artificielle analyse localement vos messages avec une précision supérieure à 90%, tout en respectant totalement votre vie privée.
               </p>
             </div>
             <div className="bg-white rounded-2xl shadow-xl p-8 transform hover:-translate-y-2 transition-all duration-300">
               <div className="text-5xl mb-6">🛡️</div>
-              <h3 className="text-2xl font-bold text-blue-800 mb-4">Protection avancée</h3>
+              <h3 className="text-2xl font-bold text-blue-800 mb-4">Protection Multi-Plateformes</h3>
               <p className="text-gray-600 leading-relaxed">
-                Une protection complète et personnalisée, adaptée à vos besoins spécifiques et à votre environnement numérique.
+                Une protection complète sur tous vos réseaux sociaux et messageries, synchronisée sur tous vos appareils en toute sécurité.
               </p>
             </div>
             <div className="bg-white rounded-2xl shadow-xl p-8 transform hover:-translate-y-2 transition-all duration-300">
               <div className="text-5xl mb-6">💬</div>
-              <h3 className="text-2xl font-bold text-blue-800 mb-4">Support 24/7</h3>
+              <h3 className="text-2xl font-bold text-blue-800 mb-4">Soutien Émotionnel 24/7</h3>
               <p className="text-gray-600 leading-relaxed">
-                Une équipe d'experts disponible à tout moment pour vous accompagner et intervenir en cas de besoin.
+                Un chatbot intelligent qui vous accompagne et vous conseille, avec un accès direct à nos experts en cas de besoin.
               </p>
             </div>
           </div>
@@ -216,14 +216,14 @@ export default function Home() {
               <div className="flex-1 p-8 lg:p-16">
                 <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Notre mission</h2>
                 <p className="text-blue-50 text-lg mb-8 leading-relaxed">
-                  Chez e-confident, nous croyons que chacun mérite de se sentir en sécurité sur Internet. Notre mission est de créer un environnement numérique plus sûr et bienveillant pour tous.
+                  Face au constat qu'1 jeune sur 5 est victime de cyberharcèlement, nous avons développé une solution innovante qui protège, détecte et accompagne en temps réel, pour un Internet plus sûr et bienveillant.
                 </p>
                 <ul className="space-y-4">
                   {[
-                    "Prévenir les situations à risque",
-                    "Protéger les utilisateurs vulnérables",
-                    "Accompagner les victimes",
-                    "Sensibiliser à la cybersécurité"
+                    "Détecter automatiquement les messages toxiques",
+                    "Protéger la confidentialité des utilisateurs",
+                    "Offrir un soutien émotionnel immédiat",
+                    "Accompagner les victimes vers les ressources adaptées"
                   ].map((item, index) => (
                     <li key={index} className="flex items-center text-white">
                       <span className="mr-3 text-blue-200">✓</span>
@@ -246,7 +246,7 @@ export default function Home() {
               Ils nous font confiance
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Découvrez comment e-confident aide ses utilisateurs à retrouver confiance dans leur vie numérique
+              Découvrez comment E-confident aide ses utilisateurs à retrouver sérénité et confiance dans leur vie numérique
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -288,20 +288,20 @@ export default function Home() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-20 px-4 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <section className="py-20 px-4 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-900 mb-8">
-            Prêt à sécuriser votre espace numérique ?
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8">
+            Protégez-vous dès maintenant
           </h2>
-          <p className="text-xl text-blue-800 mb-12 max-w-2xl mx-auto">
-            Rejoignez les milliers d'utilisateurs qui font confiance à e-confident pour leur protection en ligne.
+          <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+            1 jeune sur 5 est victime de cyberharcèlement. Ne laissez pas cela vous arriver. Rejoignez E-confident et bénéficiez d'une protection intelligente 24/7.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-transform duration-300">
+            <button className="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-transform duration-300">
               Commencer gratuitement
             </button>
-            <button className="bg-transparent border-2 border-blue-700 text-blue-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-gradient-to-r hover:from-blue-50 hover:via-purple-50 hover:to-indigo-50 transition-colors duration-300">
-              Contacter un expert
+            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-colors duration-300">
+              Demander une démo
             </button>
           </div>
         </div>

@@ -95,9 +95,9 @@ export default function Navbar() {
         </div>
 
         {/* Menu Mobile */}
-        <div className={`md:hidden transition-all duration-300 ease-in-out ${
+        <div className={`md:hidden transition-all duration-300 ${
           isMenuOpen 
-            ? 'max-h-80 opacity-100 mt-2' 
+            ? 'max-h-96 opacity-100 mt-2' 
             : 'max-h-0 opacity-0 overflow-hidden'
         }`}>
           <div className="bg-white rounded-xl shadow-md p-4 space-y-2">
@@ -122,7 +122,7 @@ export default function Navbar() {
               className="block mt-2 px-4 py-2 rounded-full font-medium text-white bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 hover:from-blue-600 hover:via-purple-600 hover:to-indigo-600 transition-colors duration-200 text-center shadow-sm"
               style={{fontFamily: 'inherit'}}
             >
-              Devenir client
+              Prendre rendez-vous
             </Link>
           </div>
         </div>

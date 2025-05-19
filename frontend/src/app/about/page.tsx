@@ -2,24 +2,43 @@
 import React from 'react';
 import Image from 'next/image';
 
+// Import des images
+import manasseImg from '../../../public/team/manasse.jpg';
+import bacharImg from '../../../public/team/bachar.jpg';
+import gaetanImg from '../../../public/team/gaetan.jpg';
+import ahmedImg from '../../../public/team/ahmed.jpg';
+import bonifaceImg from '../../../public/team/boniface.jpg';
+
 const teamMembers = [
   {
-    name: "Dr. Sarah Martin",
-    role: "Directrice de l'IA",
-    description: "Experte en intelligence artificielle et en apprentissage automatique, Sarah dirige le développement de nos algorithmes de détection.",
-    image: "/logo.png" // À remplacer par la photo du membre
+    name: "Manassé Lumbu",
+    role: "Chef de projet & Communication",
+    description: "En charge de la coordination et de la gestion du projet. Il est en relation avec les acteurs externes et les parties prenantes. Il a aussi une partie commerciale.",
+    image: "/team/manasse.jpeg"
   },
   {
-    name: "Marc Dubois",
-    role: "Responsable Protection des Données",
-    description: "Spécialiste en cybersécurité avec 15 ans d'expérience dans la protection des données sensibles.",
-    image: "/logo.png" // À remplacer par la photo du membre
+    name: "Bachar Moustapha",
+    role: "Chief Technical Officer & Ingénieur IA",
+    description: "En charge de la supervision technique du projet. Développement des IA, des applications et du web.",
+    image: "/team/bachar.jpeg"
   },
   {
-    name: "Emma Bernard",
-    role: "Responsable Support",
-    description: "Psychologue de formation, Emma coordonne notre équipe de support pour assurer un accompagnement optimal.",
-    image: "/logo.png" // À remplacer par la photo du membre
+    name: "Gaëtan Oueyeya",
+    role: "Ingénieur Informatique & Concepteur",
+    description: "En charge de la définition, de la conception et du développement des solutions techniques. Il est aussi en charge d'intégrer les IA.",
+    image: "/team/gaetan.jpeg"
+  },
+  {
+    name: "Ahmed El Abaidi",
+    role: "Développeur & Responsable Cybersécurité",
+    description: "En charge du développement technique et de la cybersécurité des programmes. En charge du respect de la RGPD.",
+    image: "/team/ahmed.jpeg"
+  },
+  {
+    name: "Boniface Pere",
+    role: "Data Analyst",
+    description: "En charge de l'identification des sources de données, de la classification et de l'analyse.",
+    image: "/team/boniface.jpeg"
   }
 ];
 
@@ -105,28 +124,49 @@ export default function About() {
           <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-12">
             Notre Équipe
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-                <div className="relative w-32 h-32 mx-auto mb-6">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover rounded-full"
-                  />
+          <div className="flex flex-wrap justify-center gap-8">
+            {/* Première ligne - 3 premiers membres */}
+            <div className="w-full flex flex-wrap justify-center gap-8 mb-8">
+              {teamMembers.slice(0, 3).map((member, index) => (
+                <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow w-full md:w-[calc(33.33%-1.5rem)] max-w-sm">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover rounded-full"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-blue-900 text-center mb-2">{member.name}</h3>
+                  <p className="text-blue-600 text-center mb-4">{member.role}</p>
+                  <p className="text-gray-600 text-center">{member.description}</p>
                 </div>
-                <h3 className="text-2xl font-bold text-blue-900 text-center mb-2">{member.name}</h3>
-                <p className="text-blue-600 text-center mb-4">{member.role}</p>
-                <p className="text-gray-600 text-center">{member.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+            {/* Deuxième ligne - 2 derniers membres */}
+            <div className="w-full flex flex-wrap justify-center gap-8">
+              {teamMembers.slice(3).map((member, index) => (
+                <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow w-full md:w-[calc(33.33%-1.5rem)] max-w-sm">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover rounded-full"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-blue-900 text-center mb-2">{member.name}</h3>
+                  <p className="text-blue-600 text-center mb-4">{member.role}</p>
+                  <p className="text-gray-600 text-center">{member.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-4 lg:px-8 bg-blue-50">
+      <section className="py-20 px-4 lg:px-8">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white rounded-xl p-8 text-center shadow-lg">
@@ -145,6 +185,59 @@ export default function About() {
               <div className="text-4xl font-bold text-blue-600 mb-2">50+</div>
               <p className="text-gray-600">Experts Dédiés</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Media Section */}
+      <section className="py-20 px-4 lg:px-8 bg-gray-50">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 text-center mb-12">
+            Ils parlent de nous
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="https://www.leparisien.fr/essonne-91/essonne-cinq-etudiants-utilisent-lintelligence-artificielle-contre-le-harcelement-en-ligne-11-03-2024-ERIAI6EITRDAZHZ5CNCMFVCLOI.php" target="_blank" rel="noopener noreferrer" className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <Image
+                src="/media/le-parisien.png"
+                alt="Le Parisien"
+                width={300}
+                height={120}
+                className="mx-auto mb-6 w-auto h-20"
+              />
+              <p className="text-gray-600 italic mb-4">
+                "Une solution innovante qui révolutionne la lutte contre le cyberharcèlement"
+              </p>
+              <p className="text-blue-600 font-semibold">- Le Parisien, Mars 2024</p>
+              <p className="text-sm text-gray-500 mt-4 hover:text-blue-600 transition-colors">Lire l'article →</p>
+            </a>
+            <a href="https://bfmbusiness.bfmtv.com/tech/e-confident-la-startup-francaise-qui-protege-contre-le-cyberharcelement_AN-202309150001.html" target="_blank" rel="noopener noreferrer" className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <Image
+                src="/media/essonnes.png"
+                alt="BFM Business"
+                width={300}
+                height={120}
+                className="mx-auto mb-6 w-auto h-20"
+              />
+              <p className="text-gray-600 italic mb-4">
+                "E-confident, la startup française qui protège efficacement contre le cyberharcèlement"
+              </p>
+              <p className="text-blue-600 font-semibold">- BFM Business, Septembre 2023</p>
+              <p className="text-sm text-gray-500 mt-4 hover:text-blue-600 transition-colors">Lire l'article →</p>
+            </a>
+            <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/e-confident-une-technologie-dia-prometteuse-pour-lutter-contre-le-cyberharcelement-1984562" target="_blank" rel="noopener noreferrer" className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <Image
+                src="/media/france24.png"
+                alt="France 24"
+                width={300}
+                height={120}
+                className="mx-auto mb-6 w-auto h-20"
+              />
+              <p className="text-gray-600 italic mb-4">
+                "Une technologie d'IA prometteuse pour lutter contre le cyberharcèlement"
+              </p>
+              <p className="text-blue-600 font-semibold">- Les Echos, Novembre 2023</p>
+              <p className="text-sm text-gray-500 mt-4 hover:text-blue-600 transition-colors">Lire l'article →</p>
+            </a>
           </div>
         </div>
       </section>

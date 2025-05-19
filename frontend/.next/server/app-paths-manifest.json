@@ -2,6 +2,7 @@
   "/not-found": "app/not-found.js",
   "/page": "app/page.js",
   "/services/page": "app/services/page.js",
+  "/services/protection-individuelle/page": "app/services/protection-individuelle/page.js",
   "/about/page": "app/about/page.js",
   "/contact/page": "app/contact/page.js"
 }
