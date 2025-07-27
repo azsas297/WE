@@ -21,6 +21,24 @@ module.exports = {
           900: '#0c4a6e',
         },
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      keyframes: {
+        'slide-in': {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        'slide-out': {
+          '0%': { transform: 'translateX(0)', opacity: '1' },
+          '100%': { transform: 'translateX(100%)', opacity: '0' },
+        },
+      },
+      animation: {
+        'slide-in': 'slide-in 0.3s ease-out forwards',
+        'slide-out': 'slide-out 0.3s ease-in forwards',
+      },
     },
   },
   plugins: [],

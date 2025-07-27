@@ -1,6 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Notification from '@/components/Notification';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 export default function Contact() {
   const [userType, setUserType] = useState<'professional' | 'individual' | null>(null);
@@ -12,20 +14,120 @@ export default function Contact() {
     subject: '',
     message: ''
   });
+  const [errors, setErrors] = useState<{
+    phone?: string;
+  }>({});
   const [activeTab, setActiveTab] = useState(0);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [notification, setNotification] = useState<{
+    message: string;
+    type: 'success' | 'error';
+  } | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const validatePhone = (phone: string) => {
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(phone)) {
+      setErrors(prev => ({
+        ...prev,
+        phone: 'Le numéro de téléphone doit contenir exactement 10 chiffres'
+      }));
+      return false;
+    }
+    setErrors(prev => ({
+      ...prev,
+      phone: undefined
+    }));
+    return true;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', { userType, ...formData });
+    
+    // Validation du téléphone
+    if (formData.phone && !validatePhone(formData.phone)) {
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          company: formData.company,
+          phone: formData.phone,
+          subject: formData.subject,
+          userType: userType
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de l\'envoi du message');
+      }
+
+      // Réinitialiser le formulaire après l'envoi réussi
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+      setUserType(null);
+      setErrors({});
+
+      // Afficher la notification de succès
+      setNotification({
+        message: 'Votre message a été envoyé avec succès !',
+        type: 'success'
+      });
+    } catch (error) {
+      console.error('Erreur:', error);
+      setNotification({
+        message: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.',
+        type: 'error'
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    
+    // Validation en temps réel pour le téléphone
+    if (name === 'phone') {
+      // Supprime tous les caractères non numériques
+      const numericValue = value.replace(/\D/g, '');
+      // Limite à 10 chiffres
+      const limitedValue = numericValue.slice(0, 10);
+      
+      setFormData(prev => ({
+        ...prev,
+        [name]: limitedValue
+      }));
+
+      if (limitedValue.length === 10) {
+        validatePhone(limitedValue);
+      } else {
+        setErrors(prev => ({
+          ...prev,
+          phone: undefined
+        }));
+      }
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const socialLinks = [
@@ -70,6 +172,13 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      {notification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification(null)}
+        />
+      )}
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
       
@@ -194,12 +303,18 @@ export default function Contact() {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all hover:border-blue-300 bg-white/50 backdrop-blur-sm"
+                            className={`w-full px-4 py-3.5 rounded-xl border ${
+                              errors.phone ? 'border-red-500' : 'border-gray-200'
+                            } focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all hover:border-blue-300 bg-white/50 backdrop-blur-sm`}
                             required
-                            placeholder="+33 6 12 34 56 78"
+                            placeholder="0612345678"
+                            maxLength={10}
                           />
                           <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/0 via-blue-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-blue-500/10 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
                         </div>
+                        {errors.phone && (
+                          <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+                        )}
                       </div>
                     </div>
                   )}
@@ -265,18 +380,23 @@ export default function Contact() {
                   <div className="pt-4">
                     <button
                       type="submit"
+                      disabled={isLoading}
                       className={`w-full px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 text-white transform hover:scale-[1.02] relative overflow-hidden group ${
                         userType === 'professional'
                           ? 'bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 hover:from-purple-700 hover:via-indigo-700 hover:to-purple-700'
                           : 'bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 hover:from-blue-700 hover:via-purple-700 hover:to-blue-700'
-                      }`}
+                      } ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}
                     >
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        Envoyer le message
-                        <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </span>
+                      {isLoading ? (
+                        <LoadingSpinner />
+                      ) : (
+                        <span className="relative z-10 flex items-center justify-center gap-2">
+                          Envoyer le message
+                          <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                     </button>
                   </div>
